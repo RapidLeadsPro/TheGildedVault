@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 6 7 13;
+  --foreground: 245 239 223;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #06070D;
+}
+
+body {
+  background-color: #06070D;
+  color: #E8E4D8;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background-color: rgba(201, 169, 97, 0.35);
+  color: #F5EFDF;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #E6CC8C 0%, #C9A961 45%, #8B6F2E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gold-shine {
+  background: linear-gradient(90deg, #8B6F2E 0%, #E6CC8C 50%, #C9A961 75%, #8B6F2E 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201, 169, 97, 0.55) 50%, transparent 100%);
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #C9A961;
+  font-weight: 500;
+}
+
+.vault-card {
+  background: linear-gradient(180deg, rgba(19, 23, 50, 0.6) 0%, rgba(13, 16, 32, 0.4) 100%);
+  border: 1px solid rgba(201, 169, 97, 0.15);
+  backdrop-filter: blur(8px);
+  transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.vault-card:hover {
+  border-color: rgba(201, 169, 97, 0.45);
+  box-shadow: 0 24px 48px -16px rgba(201, 169, 97, 0.18);
+  transform: translateY(-4px);
+}
+
+.btn-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #06070D;
+  background: linear-gradient(135deg, #E6CC8C 0%, #C9A961 45%, #B89346 100%);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 12px 28px -10px rgba(201, 169, 97, 0.55);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -10px rgba(201, 169, 97, 0.75);
+}
+
+.btn-gold::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+}
+
+.btn-gold:hover::after {
+  transform: translateX(100%);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E6CC8C;
+  border: 1px solid rgba(201, 169, 97, 0.4);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(201, 169, 97, 0.9);
+  background-color: rgba(201, 169, 97, 0.06);
+  color: #F5EFDF;
+}
+
+.gold-line {
+  width: 56px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C9A961 50%, transparent);
+}
+
+.section-padding {
+  padding-top: clamp(4rem, 9vw, 8rem);
+  padding-bottom: clamp(4rem, 9vw, 8rem);
+}
+
+.container-tight {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-tight {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.heading-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* subtle constellation backdrop */
+.bg-constellation {
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, rgba(201, 169, 97, 0.2), transparent 50%),
+    radial-gradient(1.5px 1.5px at 70% 60%, rgba(201, 169, 97, 0.15), transparent 50%),
+    radial-gradient(2px 2px at 90% 20%, rgba(230, 204, 140, 0.18), transparent 50%),
+    radial-gradient(1px 1px at 35% 75%, rgba(201, 169, 97, 0.22), transparent 50%),
+    radial-gradient(1.5px 1.5px at 55% 15%, rgba(201, 169, 97, 0.16), transparent 50%);
+}
