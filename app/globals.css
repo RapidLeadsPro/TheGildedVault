@@ -13,8 +13,22 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background-color: #06070D;
+  scroll-behavior: auto; /* Lenis handles smoothness */
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
@@ -44,6 +58,11 @@ body {
   animation: shimmer 6s linear infinite;
 }
 
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 .divider-gold {
   height: 1px;
   background: linear-gradient(90deg, transparent 0%, rgba(201, 169, 97, 0.55) 50%, transparent 100%);
@@ -61,7 +80,7 @@ body {
   background: linear-gradient(180deg, rgba(19, 23, 50, 0.6) 0%, rgba(13, 16, 32, 0.4) 100%);
   border: 1px solid rgba(201, 169, 97, 0.15);
   backdrop-filter: blur(8px);
-  transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  transition: border-color 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .vault-card:hover {
@@ -78,15 +97,15 @@ body {
   gap: 0.6rem;
   padding: 1rem 1.75rem;
   font-family: var(--font-sans);
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #06070D;
   background: linear-gradient(135deg, #E6CC8C 0%, #C9A961 45%, #B89346 100%);
   border-radius: 2px;
   overflow: hidden;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   box-shadow: 0 12px 28px -10px rgba(201, 169, 97, 0.55);
 }
 
@@ -101,7 +120,7 @@ body {
   inset: 0;
   background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
   transform: translateX(-100%);
-  transition: transform 0.8s ease;
+  transition: transform 0.9s ease;
 }
 
 .btn-gold:hover::after {
@@ -114,14 +133,14 @@ body {
   justify-content: center;
   gap: 0.5rem;
   padding: 1rem 1.5rem;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #E6CC8C;
   border: 1px solid rgba(201, 169, 97, 0.4);
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
 }
 
 .btn-ghost:hover {
@@ -137,12 +156,12 @@ body {
 }
 
 .section-padding {
-  padding-top: clamp(4rem, 9vw, 8rem);
-  padding-bottom: clamp(4rem, 9vw, 8rem);
+  padding-top: clamp(5rem, 11vw, 10rem);
+  padding-bottom: clamp(5rem, 11vw, 10rem);
 }
 
 .container-tight {
-  max-width: 1180px;
+  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -151,27 +170,18 @@ body {
 
 @media (min-width: 768px) {
   .container-tight {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 }
 
 .heading-display {
   font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.95;
 }
 
-.stat-num {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-
-/* subtle constellation backdrop */
 .bg-constellation {
   background-image:
     radial-gradient(2px 2px at 20% 30%, rgba(201, 169, 97, 0.2), transparent 50%),
@@ -179,4 +189,19 @@ body {
     radial-gradient(2px 2px at 90% 20%, rgba(230, 204, 140, 0.18), transparent 50%),
     radial-gradient(1px 1px at 35% 75%, rgba(201, 169, 97, 0.22), transparent 50%),
     radial-gradient(1.5px 1.5px at 55% 15%, rgba(201, 169, 97, 0.16), transparent 50%);
+}
+
+.bg-vault-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.18), rgba(6, 7, 13, 0) 55%);
+}
+
+/* hero video frame */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  mix-blend-mode: screen;
 }

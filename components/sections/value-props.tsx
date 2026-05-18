@@ -1,18 +1,32 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { MaskedWords } from "@/components/reveal";
+
 const props = [
   {
-    eyebrow: "01 · Method",
-    title: "AI processes thousands of Bazi formulas — instantly.",
-    body: "Traditional masters reference dozens of formulas in their head. Our proprietary engine cross-references every classical text, including Zi Wei Dou Shu, Qi Men Dun Jia, and the Four Pillars — in 30 seconds. Same depth. No human bias. No two-week wait.",
+    index: "01",
+    eyebrow: "The Method",
+    title: "Algorithmic, not anecdotal.",
+    body: "Senior masters carry roughly 200 Bazi formulas in active memory. Our engine references over 2,800 — cross-validated across the Four Pillars, Zi Wei Dou Shu, and Qi Men Dun Jia. Same depth. No bias. No two-week wait.",
+    hanzi: "精算",
+    hanziLatin: "Precise calculation",
   },
   {
-    eyebrow: "02 · Material",
-    title: "Grade-A stones, ethically sourced. Certificate included.",
-    body: "Every bracelet is hand-strung from certified Grade-A jade, high-clarity citrine, raw amethyst, and select rare elementals. Each piece ships with provenance documentation. We do not stock dyed glass or low-grade fillers. Ever.",
+    index: "02",
+    eyebrow: "The Material",
+    title: "Grade-A. Certified. Always.",
+    body: "Each stone arrives with a certificate of authenticity, the mining origin, and lab-verified gemological properties. We do not stock dyed glass, reconstituted stone, or low-grade fillers. If a piece you receive fails independent testing, we refund and replace forever.",
+    hanzi: "真材",
+    hanziLatin: "True material",
   },
   {
-    eyebrow: "03 · Match",
-    title: "Crafted to your exact elemental deficiency.",
-    body: "Your AI Bazi report identifies what you're missing — Water, Wood, Fire, Earth, or Metal. We then craft a bracelet around the precise crystal that supplements your chart, your wealth sector, and your current life phase. No generic 'love stone' guesswork.",
+    index: "03",
+    eyebrow: "The Match",
+    title: "Crafted to your missing element.",
+    body: "Your AI Bazi report identifies which of the five elements your chart lacks. Your bracelet is hand-strung around the precise crystal that supplements that deficiency — within your wealth sector, your career phase, your aesthetic. No generic 'love stone' guesswork.",
+    hanzi: "天人合一",
+    hanziLatin: "Heaven and human, as one",
   },
 ];
 
@@ -20,34 +34,57 @@ export function ValueProps() {
   return (
     <section className="section-padding relative overflow-hidden bg-obsidian">
       <div className="container-tight">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mb-20 max-w-3xl md:mb-32">
           <p className="eyebrow">The Vault Method</p>
-          <h2 className="heading-display mt-4 text-4xl text-cream md:text-5xl">
-            Three reasons it works <span className="text-gold-gradient">where others guess.</span>
+          <h2 className="heading-display mt-6 text-5xl text-cream md:text-7xl lg:text-8xl">
+            <MaskedWords text="Three reasons" /> <br />
+            <span className="italic text-gold-gradient">
+              <MaskedWords text="it works." />
+            </span>
           </h2>
-          <div className="mx-auto mt-6 gold-line" />
         </div>
 
-        <div className="mt-20 space-y-12 md:space-y-0 md:divide-y md:divide-gold-400/10">
+        <div className="space-y-32 md:space-y-48">
           {props.map((p, i) => (
-            <div
-              key={p.eyebrow}
-              className="grid items-start gap-8 py-12 md:grid-cols-[1fr_1.6fr] md:gap-16"
+            <motion.article
+              key={p.index}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-15% 0px -15% 0px" }}
+              transition={{ duration: 1.1, ease: [0.22, 0.61, 0.36, 1] }}
+              className={`grid items-start gap-10 md:gap-20 ${
+                i % 2 === 0
+                  ? "md:grid-cols-[0.4fr_1fr_1.2fr]"
+                  : "md:grid-cols-[1.2fr_1fr_0.4fr] md:[&>*:last-child]:order-first md:[&>*:first-child]:order-last"
+              }`}
             >
-              <div>
+              {/* Massive index */}
+              <div className="flex flex-col gap-3">
+                <span className="font-display text-[clamp(5rem,12vw,11rem)] font-light italic leading-none text-gold-300/30">
+                  {p.index}
+                </span>
                 <p className="eyebrow">{p.eyebrow}</p>
-                <h3 className="heading-display mt-4 text-2xl text-cream md:text-3xl">
+              </div>
+
+              {/* Title */}
+              <div>
+                <h3 className="heading-display text-4xl text-cream md:text-5xl lg:text-6xl">
                   {p.title}
                 </h3>
+                <div className="mt-6 flex items-center gap-4">
+                  <div className="h-px w-12 bg-gold-400/40" />
+                  <p className="font-hanzi text-sm tracking-[0.3em] text-gold-300/80">
+                    {p.hanzi}
+                  </p>
+                  <span className="text-xs italic text-smoke">— {p.hanziLatin}</span>
+                </div>
               </div>
-              <div className="flex flex-col gap-6">
-                <p className="text-lg leading-relaxed text-bone/75">{p.body}</p>
-                <div className="h-px w-12 bg-gold-400/40" />
-                <p className="font-display text-sm text-gold-300/80">
-                  {["精算 · Precise calculation", "真材 · True material", "天人合一 · In harmony"][i]}
-                </p>
+
+              {/* Body */}
+              <div>
+                <p className="text-lg leading-relaxed text-bone/75 md:text-xl">{p.body}</p>
               </div>
-            </div>
+            </motion.article>
           ))}
         </div>
       </div>

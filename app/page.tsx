@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/hero";
+import { MarqueeXL } from "@/components/marquee-xl";
 import { ValueProps } from "@/components/sections/value-props";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { FeaturedOffer } from "@/components/sections/featured-offer";
@@ -12,6 +13,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <MarqueeXL />
       <ValueProps />
       <HowItWorks />
       <FeaturedOffer />
