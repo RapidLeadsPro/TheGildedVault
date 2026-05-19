@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/hero";
 import { MarqueeXL } from "@/components/marquee-xl";
+import { MistDivider } from "@/components/sections/mist-divider";
 import { ValueProps } from "@/components/sections/value-props";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { FeaturedOffer } from "@/components/sections/featured-offer";
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Hero />
       <MarqueeXL />
       <ValueProps />
+      <MistDivider />
       <HowItWorks />
       <FeaturedOffer />
       <FiveElements />

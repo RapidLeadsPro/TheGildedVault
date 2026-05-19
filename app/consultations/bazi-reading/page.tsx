@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FeaturedOffer } from "@/components/sections/featured-offer";
 import { FiveElements } from "@/components/sections/elements";
 import { FAQ } from "@/components/sections/faq";
+import { AmbientVideo } from "@/components/ambient-video";
 
 export const metadata: Metadata = {
   title: "AI Bazi Reading Singapore — SGD 20, Instant Report",
@@ -14,7 +15,11 @@ export const metadata: Metadata = {
 export default function BaziReadingPage() {
   return (
     <>
-      <section className="relative pb-12 pt-32 md:pt-40">
+      <section className="relative isolate overflow-hidden pb-12 pt-32 md:pt-40">
+        <div className="absolute inset-0 -z-20 overflow-hidden">
+          <AmbientVideo src="/videos/bazi.mp4" opacity={0.4} blend="screen" eager />
+          <div className="absolute inset-0 bg-gradient-to-b from-obsidian/70 via-obsidian/40 to-obsidian" />
+        </div>
         <div className="absolute inset-0 -z-10 bg-vault-glow" />
         <div className="container-tight">
           <div className="mx-auto max-w-3xl text-center">

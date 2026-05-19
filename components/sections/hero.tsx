@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { MaskedWords } from "@/components/reveal";
+import { AmbientVideo } from "@/components/ambient-video";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -23,6 +24,12 @@ export function Hero() {
       ref={ref}
       className="relative isolate min-h-[100svh] overflow-hidden bg-obsidian"
     >
+      {/* Hero ambient video — cinematic bracelet macro */}
+      <motion.div className="absolute inset-0 -z-30 overflow-hidden" style={{ y: bgY }}>
+        <AmbientVideo src="/videos/hero.mp4" opacity={0.55} blend="screen" eager />
+        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/20 to-obsidian" />
+      </motion.div>
+
       {/* Layered atmosphere */}
       <motion.div className="absolute inset-0 -z-20" style={{ y: bgY }}>
         <div

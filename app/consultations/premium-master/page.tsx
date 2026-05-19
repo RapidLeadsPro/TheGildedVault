@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AmbientVideo } from "@/components/ambient-video";
 
 export const metadata: Metadata = {
   title: "The Gilded Master Experience — Private 1-on-1 Consultation",
@@ -19,7 +20,11 @@ const includes = [
 export default function PremiumMasterPage() {
   return (
     <>
-      <section className="relative pb-16 pt-32 md:pt-40">
+      <section className="relative isolate overflow-hidden pb-16 pt-32 md:pt-40">
+        <div className="absolute inset-0 -z-20 overflow-hidden">
+          <AmbientVideo src="/videos/atelier.mp4" opacity={0.45} blend="screen" eager />
+          <div className="absolute inset-0 bg-gradient-to-b from-obsidian/65 via-obsidian/35 to-obsidian" />
+        </div>
         <div className="absolute inset-0 -z-10 bg-vault-glow" />
         <div className="container-tight">
           <div className="mx-auto max-w-3xl text-center">

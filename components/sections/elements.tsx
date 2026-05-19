@@ -2,11 +2,13 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { AmbientVideo } from "@/components/ambient-video";
 
 const elements = [
   {
     name: "Wood",
     hanzi: "木",
+    video: "/videos/wood.mp4",
     color: "from-emerald-400/80 to-jade/30",
     stones: "Green Aventurine · Malachite · Jade",
     domain: "Growth · Ambition · New ventures",
@@ -14,6 +16,7 @@ const elements = [
   {
     name: "Fire",
     hanzi: "火",
+    video: "/videos/fire.mp4",
     color: "from-rose-400/80 to-orange-500/30",
     stones: "Carnelian · Garnet · Red Jasper",
     domain: "Recognition · Passion · Leadership",
@@ -21,6 +24,7 @@ const elements = [
   {
     name: "Earth",
     hanzi: "土",
+    video: "/videos/earth.mp4",
     color: "from-amber-600/80 to-yellow-700/30",
     stones: "Tiger's Eye · Yellow Jade · Pyrite",
     domain: "Stability · Trust · Property",
@@ -28,6 +32,7 @@ const elements = [
   {
     name: "Metal",
     hanzi: "金",
+    video: "/videos/metal.mp4",
     color: "from-gold-200/80 to-gold-500/30",
     stones: "Citrine · Clear Quartz · Rutilated Quartz",
     domain: "Wealth · Discipline · Precision",
@@ -35,6 +40,7 @@ const elements = [
   {
     name: "Water",
     hanzi: "水",
+    video: "/videos/water.mp4",
     color: "from-sky-400/80 to-blue-700/30",
     stones: "Aquamarine · Sodalite · Lapis Lazuli",
     domain: "Wisdom · Career flow · Communication",
@@ -81,11 +87,19 @@ export function FiveElements() {
               key={el.name}
               className="relative w-[80vw] max-w-md shrink-0 overflow-hidden rounded-sm border border-gold-400/20 bg-gradient-to-b from-navy-800/60 to-navy-900/80 p-10 md:w-[40vw]"
             >
+              {/* Element ambient video */}
+              <AmbientVideo
+                src={el.video}
+                className="!inset-0"
+                opacity={0.45}
+                blend="screen"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-navy-900/40 via-navy-900/60 to-obsidian/90" />
               <div
-                className={`pointer-events-none absolute -right-12 -top-12 h-72 w-72 rounded-full bg-gradient-to-br ${el.color} opacity-50 blur-3xl`}
+                className={`pointer-events-none absolute -right-12 -top-12 h-72 w-72 rounded-full bg-gradient-to-br ${el.color} opacity-40 blur-3xl`}
               />
               <div className="relative">
-                <p className="font-hanzi text-9xl text-gold-200/80 md:text-[12rem]">{el.hanzi}</p>
+                <p className="font-hanzi text-9xl text-gold-200/90 md:text-[12rem]">{el.hanzi}</p>
                 <h3 className="mt-6 font-display text-5xl text-cream md:text-6xl">{el.name}</h3>
                 <div className="my-6 h-px w-16 bg-gold-400/40" />
                 <p className="text-[10px] uppercase tracking-widest text-smoke">Stones</p>
